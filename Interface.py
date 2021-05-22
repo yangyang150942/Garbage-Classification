@@ -48,7 +48,7 @@ def predict_image(file_name):
     
 def import_model():
     #Import the model
-    new_model = tf.keras.models.load_model('D:\\ZJU_graduate\\Graduation Design\\Graduation Project\\3_Model Optimization\\model_ResNet101V2_FTat364', compile=False)
+    new_model = tf.keras.models.load_model('model path', compile=False)
 
     #Compile model
     new_model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
