@@ -21,7 +21,7 @@ fine_tune_epochs = 12
 
 # Read and store datasets
 train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    'D:\\ZJU_graduate\\Graduation Design\\Graduation Project\\1_Classification Standard\\dataset-resized',
+    'dataset directory',
     validation_split=0.2,
     subset="training",
     seed=123,
@@ -29,7 +29,7 @@ train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     batch_size=batch_size)
 
 validation_dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    'D:\\ZJU_graduate\\Graduation Design\\Graduation Project\\1_Classification Standard\\dataset-resized',
+    'dataset directory',
     validation_split=0.2,
     subset="validation",
     seed=123,
@@ -99,7 +99,7 @@ prediction_batch = prediction_layer(feature_batch_average)
 print(prediction_batch.shape)
 
 #Save base model
-base_model.save('D:\\ZJU_graduate\\Graduation Design\\Graduation Project\\3_Model Optimization\\model_ResNet101V2_base')
+base_model.save('base model path')
 
 #Add the classification head
 inputs = tf.keras.Input(shape=(img_height, img_width, 3))
@@ -167,7 +167,7 @@ plt.xlabel('epoch')
 plt.show()
 
 #Save model before fine-tuning
-model.save('D:\\ZJU_graduate\\Graduation Design\\Graduation Project\\3_Model Optimization\\model_ResNet101V2_noFT')
+model.save('model path befoe fine-tuning')
 
 # Perform fine-tuning
 base_model.trainable = True
@@ -243,10 +243,10 @@ loss, accuracy = model.evaluate(test_dataset)
 print('Test accuracy :', accuracy)
 
 # Save the model
-model.save('D:\\ZJU_graduate\\Graduation Design\\Graduation Project\\3_Model Optimization\\model_ResNet101V2_FTat364')
+model.save('model path')
 
 # predict a single image
-file_name = 'D:\\ZJU_graduate\\Graduation Design\\Graduation Project\\1_Classification Standard\\dataset-resized\\metal\\metal5.jpg'
+file_name = 'sample image path'
 
 image_jpg = tf.io.read_file(file_name)
 image_encoded = tf.image.decode_jpeg(image_jpg)
